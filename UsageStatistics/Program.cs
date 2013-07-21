@@ -446,8 +446,8 @@ namespace UsageStatistics
 
         public AggregateStorage(DateTime startDate,DateTime endDate, Dictionary<DateTime, List<AppInfo>> apps,string apiKey )
         {
-           // var key = string.IsNullOrEmpty(apiKey) ? @"M4XNzRh5Cdcgi+M9D/8Spqo3NNxkIKVOfpYYpdk+fBM=" : apiKey;
-            var key = string.IsNullOrEmpty(apiKey) ? @"lepOMARUDucdSbyzBB+iCfm8tVX2YZKMjMB/wxn3NEw=" : apiKey;
+           
+            var key = string.IsNullOrEmpty(apiKey) ? @"{USAGETRACKER APIKEY}" : apiKey;
             App.Initialize(WindowsRT.Host, key, Environment.Live);
             App.Debug.Out = Console.Out;
             //App.Debug.IsEnabled = true;
