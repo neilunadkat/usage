@@ -731,14 +731,14 @@ namespace UsageStatistics
         private static NetworkCredential cred = new NetworkCredential("{Sender Email}", "{PWD}");
         private static SmtpClient client = new SmtpClient("smtp.gmail.com", 25);
         private static string usagePageURL = "{Usage page url}";
-        private static List<string> successRecipients = new string[] {"neil@appacitive.com","all@appacitive.com" }.ToList();
-        private static List<string> errorRecipients = new string[] {"neil@appacitive.com" }.ToList();
+        private static List<string> successRecipients = new string[] {"{MAILID}" }.ToList();
+        private static List<string> errorRecipients = new string[] {"{MAILID}" }.ToList();
 
         public static void SendSuccessMessage(DateTime d) 
         {
             MailMessage msg = new MailMessage();
             successRecipients.ForEach(m => msg.To.Add(m));
-            msg.From = new MailAddress("noreply@appacitive.com");
+            msg.From = new MailAddress("{MAILID}");
             msg.Subject = string.Format("API Usage for yesterday");
             msg.Body = string.Format("API usage for {0} {1} {2} {3} has been updated.\nYou can find the readings here {4}"
                 ,d.DayOfWeek.ToString()
@@ -757,7 +757,7 @@ namespace UsageStatistics
             MailMessage msg = new MailMessage();
             var appException = e as AppacitiveException;
             errorRecipients.ForEach(m => msg.To.Add(m));
-            msg.From = new MailAddress("noreply@appacitive.com");
+            msg.From = new MailAddress("{MAILID}");
             msg.Subject = string.Format("Error while getting API Usage for yesterday");
             msg.Body = string.Format(" Error while getting API usage for {0} {1} {2} {3}. \n Here it is: \n{4} \n RefID : {5}"
                 , d.DayOfWeek.ToString()
